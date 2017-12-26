@@ -9,9 +9,9 @@ export const FETCH_WEATHER = 'FETCH_WEATHER'
 // npm install --save redux-promise
 
 export function fetchWeather(city) {
-  const url = `${ROOT_URL}&zip=${city},us`
+  const url = `${ROOT_URL}&zip=${city},us&units=imperial`
   const request = axios.get(url)
-
+  console.log('url', url)
   console.log('Request', request)
 
   return {

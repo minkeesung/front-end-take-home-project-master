@@ -3,10 +3,25 @@ import { connect } from 'react-redux'
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class WeatherList extends Component {
+  split_array(array) {
+    var i,j,temparray,chunk = 8;
+    var new_array = []
+    for (i=0,j=array.length; i<j; i+=chunk) {
+      temparray = array.slice(i,i+chunk);
+      new_array.push(Math.round(this.average_of_array(temparray)))
+    }
+    return new_array
+  }
+
+  average_of_array(array) {
+    return array.reduce((total, sum) => total + sum)/(array.length)
+  }
+
   renderWeather(cityData) {
     const name = cityData.city.name
     const temps = cityData.list.map(weather => weather.main.temp)
     console.log(temps)
+    console.log("average", this.split_array(temps))
     return (
       <tr key={name}>
         <td>{name}</td>
@@ -31,7 +46,7 @@ class WeatherList extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.weather.map(this.renderWeather)}
+          {this.props.weather.map(this.renderWeather.bind(this))}
         </tbody>
       </table>
     )
@@ -39,11 +54,8 @@ class WeatherList extends Component {
 }
 
 function mapStateToProps({weather}){
-
-  return {weather} //same as {weather: weather}
+  return {weather}
 }
 
 
 export default connect(mapStateToProps)(WeatherList)
-
-// connect our component to mapStateToProps
