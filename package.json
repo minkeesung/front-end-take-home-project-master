@@ -7,13 +7,18 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
+    "ionicons": "^3.0.0",
     "next": "^4.2.1",
+    "normalize-css": "^2.3.1",
+    "normalize.css": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-ionicons": "^2.1.6",
     "react-redux": "^5.0.6",
     "react-sparklines": "^1.7.0",
     "redux": "^3.7.2",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "reset-css": "^2.2.1"
   },
   "scripts": {
     "dev": "next",

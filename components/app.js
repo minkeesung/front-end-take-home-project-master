@@ -8,6 +8,12 @@ export default class App extends Component {
       <div>
         <SearchBar />
         <WeatherList />
+
+      <style jsx global>{`
+        body {
+          margin: -20px 0px 0px 0px;
+        }
+      `}</style>
       </div>
     );
   }
