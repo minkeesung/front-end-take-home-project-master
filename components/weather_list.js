@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class WeatherList extends Component {
   split_array(array) {
@@ -33,21 +32,12 @@ class WeatherList extends Component {
   }
 
   render() {
+
+    console.log('weather issss', this.props.weather)
+
     return (
       <section className="display_weather">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>City</th>
-              <th>Temperature</th>
-              <th>Pressure</th>
-              <th>Humidity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.weather.map(this.renderWeather.bind(this))}
-          </tbody>
-        </table>
+
         <style jsx>{`
           .display_weather {
             background-color: black;

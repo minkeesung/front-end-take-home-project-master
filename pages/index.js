@@ -19,6 +19,7 @@ export default class Page extends Component {
       <div>
         <Head>
           <title>Take-home Project</title>
+          <script src="https://use.fontawesome.com/968ae74d76.js"></script>
         </Head>
         <Provider store={createStoreWithMiddleware(reducers)}>
           <App />
