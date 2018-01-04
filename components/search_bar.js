@@ -48,7 +48,6 @@ class SearchBar extends Component {
   }
   render() {
     return (
-      <div>
         <section className="search_bar">
 
 
@@ -64,7 +63,6 @@ class SearchBar extends Component {
                 <Ionicon onClick={this.onFormSubmit} type="submit" icon="ios-arrow-round-down" fontSize="100px" color="white" />
               </div>
           </form>
-        </section>
         <style jsx>{`
           h1 {
             color: white;
@@ -107,7 +105,7 @@ class SearchBar extends Component {
           }
 
         `}</style>
-      </div>
+      </section>
     )
   }
 }

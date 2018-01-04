@@ -9,7 +9,7 @@ export const FETCH_WEATHER = 'FETCH_WEATHER'
 // npm install --save redux-promiseappid=${API_KEY}&
 
 export function fetchWeather(zip_code) {
-  const url = `http://api.openweathermap.org/data/2.5/forecast/daily?appid=${API_KEY}&zip=${zip_code},us`
+  const url = `http://api.openweathermap.org/data/2.5/forecast/daily?appid=${API_KEY}&zip=${zip_code},us&units=imperial`
   const request = axios.get(url)
   console.log('url', url)
   console.log('Request', request)
