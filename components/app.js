@@ -11,7 +11,7 @@ export default class App extends Component {
 
       <style jsx global>{`
         body {
-          margin: -20px 0px 0px 0px;
+          margin: 0px 0px 0px 0px;
         }
 
 

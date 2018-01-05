@@ -10,13 +10,10 @@ class WeatherList extends Component {
   render() {
 
     let a = []
+    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     if (this.props.weather) {
-      a = this.props.weather.list.splice(0,6).map((day_of_week) => <WeatherBox weather={day_of_week.temp.day} />)
+      a = this.props.weather.list.splice(0,6).map((day_of_week, index) => <WeatherBox weather={Math.round(day_of_week.temp.day)} day={days[index]} />)
     }
-    console.log("ssodifjsdofisjaasdvnos", a)
-    // let pokemons = displayedPokemons.map((pokemon, index) => {
-    //   return <Pokemon pokemon={pokemon} key={index} />
-    // })
 
 
     return (
@@ -26,7 +23,7 @@ class WeatherList extends Component {
         </ul>
         <style jsx>{`
           .display_weather {
-
+            background-color: black;
             background-size: cover;
             height: 100vh;
             background-position: center;
@@ -42,6 +39,8 @@ class WeatherList extends Component {
             list-style: none;
             margin: 0;
             padding: 0;
+            text-align: center;
+            color: white;
           }
 
         `}</style>

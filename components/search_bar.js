@@ -50,20 +50,25 @@ class SearchBar extends Component {
     return (
         <section className="search_bar">
 
-
-          <h1>Weather app</h1>
-          <h2>Type in your zip code to see how awful the weather is<br />in your area this week.</h2>
-          <form onSubmit={this.onFormSubmit} className="input-group">
-            <input
-              placeholder="000000"
-              className="form-control"
-              value={this.state.term}
-              onChange={this.onInputChange} />
-              <div>
-                <Ionicon onClick={this.onFormSubmit} type="submit" icon="ios-arrow-round-down" fontSize="100px" color="white" />
-              </div>
-          </form>
+          <div className="wrapper">
+            <h1>Weather app</h1>
+            <h2>Type in your zip code to see how awful the weather is<br />in your area this week.</h2>
+            <form onSubmit={this.onFormSubmit} className="input-group">
+              <input
+                placeholder="000000"
+                className="form-control"
+                value={this.state.term}
+                onChange={this.onInputChange} />
+                <div>
+                  <Ionicon onClick={this.onFormSubmit} type="submit" icon="ios-arrow-round-down" fontSize="100px" color="white" />
+                </div>
+            </form>
+          </div>
         <style jsx>{`
+          .wrapper {
+            padding: 13% 20%;
+          }
+
           h1 {
             color: white;
           }

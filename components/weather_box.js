@@ -1,26 +1,39 @@
 import React from 'react'
 
-const WeatherBox = (props) => (
-  <li className="weather">
+const WeatherBox = ({day, weather}) => (
+
+  <li className="weather_list">
     <div className="weather_box">
-      <div>herrooo</div>
-      <div>{props.weather}</div>
+      <div className="day">{day}</div>
+      <div className="weather"><span className="weather_num"> {weather}</span> F</div>
     </div>
   <style jsx>{`
-    .weather {
-      position: relative;
-      z-index: 20000;
+
+
+    .weather_list {
       display: inline-flex;
-      overflow: hidden;
-      margin: 50px;
-      cursor: pointer;
+      margin: 20% .2%;
     }
 
     .weather_box {
-      background-color: blue;
+      border: 1px solid white;
+    }
+
+    .day {
+      padding: 10px;
+      border-bottom: 1px solid white;
+    }
+
+    .weather {
+      padding: 10px 20px;
+    }
+
+    .weather_num {
+      font-size: 40px;
     }
   `}</style>
   </li>
+
 )
 
 export default WeatherBox
