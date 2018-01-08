@@ -9,7 +9,6 @@ const WeatherBox = ({day, weather}) => (
     </div>
   <style jsx>{`
 
-
     .weather_list {
       display: inline-flex;
       margin: 17% .2%;

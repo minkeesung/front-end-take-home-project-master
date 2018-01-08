@@ -17,17 +17,6 @@ class WeatherList extends Component {
       weather_forecast = this.props.weather.list.splice(0,6).map((day_of_week, index) => <WeatherBox weather={Math.round(day_of_week.temp.day)} day={days[index]} key={index}/>)
     }
 
-    if (this.props.weather === "requesting") {
-      weather_forecast = <div className="loading">Loading...<style jsx>{`
-      .loading {
-        margin-top: 10%;
-        color: white;
-        font-family: 'Apercu Pro';
-        font-size: 200px;
-        font-weight: 100;
-        margin-bottom: 2%;
-      }`}</style></div>
-    }
 
     return (
       <section className="display_weather">
@@ -52,6 +41,7 @@ class WeatherList extends Component {
             padding: 0;
             text-align: center;
             color: white;
+            
           }
 
         `}</style>

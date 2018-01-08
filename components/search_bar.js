@@ -65,6 +65,18 @@ class SearchBar extends Component {
       }`}</style></div>
     }
 
+    let loading = null
+
+    if (this.props.weather === "requesting") {
+      loading = <div className="loading">Loading...<style jsx>{`
+      .loading {
+        color: white;
+        font-family: 'Apercu Pro';
+        font-size: 20px;
+        font-weight: 100;
+        margin-bottom: 2%;
+      }`}</style></div>
+    }
 
     return (
         <section className="search_bar">
@@ -73,6 +85,7 @@ class SearchBar extends Component {
             <h1>Weather app</h1>
             <h2>Type in your zip code to see how awful the weather is<br />in your area this week.</h2>
             {error}
+            {loading}
             <form onSubmit={this.onFormSubmit} className="input-group">
               <input
                 placeholder="000000"
