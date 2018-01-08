@@ -6,6 +6,7 @@ import Ionicon from 'react-ionicons'
 import * as Scroll from 'react-scroll'
 import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller  } from 'react-scroll'
 
+
 class SearchBar extends Component {
   constructor(props) {
     super(props)
@@ -40,73 +41,112 @@ class SearchBar extends Component {
     scroll.scrollToBottom();
   }
 
+  scrollDownOrShowError() {
+
+  }
+
   onFormSubmit(event) {
     event.preventDefault()
-    this.props.fetchWeather(this.state.term);
-    this.setState({term: ''})
-    this.scrollToBottom()
+    this.props.fetchWeather(this.state.term, this.scrollToBottom)
   }
+
   render() {
+    let error = null
+    if (this.props.weather === "error") {
+      error = <div className="error">
+      Please enter a valid zipcode
+      <style jsx>{`
+      .error {
+        color: white;
+        font-family: 'Apercu Pro';
+        font-size: 20px;
+        font-weight: 100;
+        margin-bottom: 2%;
+      }`}</style></div>
+    }
+
+
     return (
         <section className="search_bar">
 
           <div className="wrapper">
             <h1>Weather app</h1>
             <h2>Type in your zip code to see how awful the weather is<br />in your area this week.</h2>
+            {error}
             <form onSubmit={this.onFormSubmit} className="input-group">
               <input
                 placeholder="000000"
                 className="form-control"
                 value={this.state.term}
                 onChange={this.onInputChange} />
-                <div>
-                  <Ionicon onClick={this.onFormSubmit} type="submit" icon="ios-arrow-round-down" fontSize="100px" color="white" />
+                <div className="icon">
+                  <Ionicon onClick={this.onFormSubmit} type="submit" icon="ios-arrow-round-down" fontSize="90px" color="white" />
                 </div>
             </form>
           </div>
         <style jsx>{`
+
+
           .wrapper {
-            padding: 13% 20%;
+            padding: 10% 5%;
+          }
+
+          .icon {
+            margin: 2% -2%;
           }
 
           h1 {
             color: white;
+            font-family: Tiempos Headline Semibold;
+            font-size: 40px;
+            margin-bottom: 0px;
           }
 
           h2 {
             color: white;
+            font-family: 'Apercu Pro';
+            font-size: 20px;
+            font-weight: 100;
+            margin-bottom: 25px;
           }
 
           .search_bar {
-            background-color: #ff2700;
+            background-color: #d6482e;
             background-size: cover;
             height: 100vh;
             width: 100%;
             padding: 0;
             box-sizing: border-box;
+
           }
 
           .form-control {
-            background-color: #ff2700;
+            background-color: #d6482e;
             border: 2px solid white;
             width: 50%;
-            height: 50px;
-            font-size: 24px;
+            height: 100px;
+            font-size: 50px;
             color: white;
             padding: 0px 0px 0px 20px;
+            font-family: Apercu Pro;
           }
 
           ::placeholder {
-              color: white;
+              color: #db7b6a;
+              font-size: 50px;
               opacity: 1; /* Firefox */
           }
 
           :-ms-input-placeholder { /* Internet Explorer 10-11 */
              color: white;
+             color: #db7b6a;
+             font-size: 50px;
           }
 
           ::-ms-input-placeholder { /* Microsoft Edge */
              color: white;
+             color: #db7b6a;
+             font-size: 50px;
           }
 
         `}</style>
@@ -115,8 +155,13 @@ class SearchBar extends Component {
   }
 }
 
+
+function mapStateToProps({weather}) {
+  return {weather}
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators( {fetchWeather}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

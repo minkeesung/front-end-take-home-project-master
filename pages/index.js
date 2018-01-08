@@ -4,10 +4,11 @@ import App from '../components/app'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxPromise from 'redux-promise'
+import reduxThunk from 'redux-thunk'
 
 import reducers from '../reducers';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
 
 export default class Page extends Component {
   async getInitialProps() {
@@ -19,7 +20,6 @@ export default class Page extends Component {
       <div>
         <Head>
           <title>Take-home Project</title>
-          <script src="https://use.fontawesome.com/968ae74d76.js"></script>
         </Head>
         <Provider store={createStoreWithMiddleware(reducers)}>
           <App />
